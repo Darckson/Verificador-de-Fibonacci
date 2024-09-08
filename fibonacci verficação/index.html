@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Fibonacci</title>
+
+    <script>
+        //função
+        function fibonacci(n) {
+            let fibSequence = [0, 1]; //inicio com 2 numeros.
+            //loop while para adicionar numeros a seguencia, enquanto o valor for menor que 'n'
+            while (fibSequence[fibSequence.length - 1] < n) {
+                //calcula a prox... seguência
+                let nextValue = fibSequence[fibSequence.length - 1] + fibSequence[fibSequence.length - 2];
+                fibSequence.push(nextValue); //adiciona o próximo numero á seguência.
+            }
+            return fibSequence; //retorna a seguencia gerada.
+        }
+         //funçãopara verificar se pertece ou não-pertence
+        function sePertence_A_Fibonacci() {
+            let n = parseInt(document.getElementById("numero").value); //obtençao do valor + conversão para inteiro.
+            let fibSequence = fibonacci(n); //gera a seguencia de fibonacci até 'n'.
+            let result = document.getElementById("resultado"); //elemento resultado.
+            //condicionais e resultado.
+            if (fibSequence.includes(n)) {
+                result.textContent = `O número ${n} pertence à sequência de Fibonacci!`;
+            } else {
+                result.textContent = `O número ${n} não pertence à sequência de Fibonacci!`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>VERIFICADOR FIBONACCI</h1>
+    <label for="numero">Informe um número:</label> 
+    <input type="number" id="numero" name="numero">
+    <button onclick="sePertence_A_Fibonacci()">Verificar</button>
+    <p id="resultado"></p>
+
+</body>
+</html>
